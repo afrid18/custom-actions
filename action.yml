@@ -1,0 +1,30 @@
+# https://help.github.com/en/articles/metadata-syntax-for-github-actions
+
+name: 'Check if in maintenance window'
+description: 'Check if the current time is within the maintenance window'
+author: 'afrid18'
+branding:
+  icon: 'clock'
+  color: 'blue'
+
+inputs:
+  maintainanceWindowStart:
+    description: 'The start time of the maintenance window'
+    required: true
+    default: '00:00'
+  maintainanceWindowEnd:
+    description: 'The end time of the maintenance window'
+    required: true
+    default: '00:00'
+  timeZone:
+    description: 'The time zone'
+    required: false
+    default: 'EST'
+
+outputs:
+  withinWindow:
+    description: 'Whether the current time is within the maintenance window'
+
+runs:
+  using: 'node20'
+  main: 'index.js'
